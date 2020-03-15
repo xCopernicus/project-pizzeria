@@ -140,15 +140,11 @@
         for (const option in thisProduct.data.params[param].options){
           if (formData[param].includes(option)){
             if (thisProduct.data.params[param].options[option].default !== true){
-              const priceChange = thisProduct.data.params[param].options[option].price;
-              price += priceChange;
-              console.log('Price add: ', priceChange);
+              price += thisProduct.data.params[param].options[option].price;;
             }
           } else {
             if (thisProduct.data.params[param].options[option].default == true){
-              const priceChange = thisProduct.data.params[param].options[option].price;
-              price -= priceChange;
-              console.log('Price substract: ', priceChange);
+              price -= thisProduct.data.params[param].options[option].price;
             }
           }
         }
