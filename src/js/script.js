@@ -158,6 +158,21 @@
           }
         }
       }
+
+      /*for (const param in formData){
+        console.log('!', param);
+        for (const option of formData[param]){
+          console.log(option);
+          const imgClass = '.' + param + '-' + option;
+          console.log(imgClass);
+          try {
+            price += thisProduct.data.params[param].options[option].price;
+          } finally {
+            continue
+          }
+        }
+      }*/
+
       thisProduct.priceElem.innerHTML = price;
     }
   }
@@ -191,7 +206,6 @@
       thisApp.initMenu();
     }
   };
-
 
 
   app.init();
