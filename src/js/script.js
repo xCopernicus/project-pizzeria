@@ -88,6 +88,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -138,11 +139,19 @@
 
       for (const param in thisProduct.data.params){
         for (const option in thisProduct.data.params[param].options){
+          const imgClass = '.' + param + '-' + option;
+          const imgsActive = thisProduct.imageWrapper.querySelectorAll(imgClass);
           if (formData[param].includes(option)){
+            for(const imgActive of imgsActive){
+              imgActive.classList.add(classNames.menuProduct.imageVisible);
+            }
             if (thisProduct.data.params[param].options[option].default !== true){
-              price += thisProduct.data.params[param].options[option].price;;
+              price += thisProduct.data.params[param].options[option].price;
             }
           } else {
+            for(const imgActive of imgsActive){
+              imgActive.classList.remove(classNames.menuProduct.imageVisible);
+            }
             if (thisProduct.data.params[param].options[option].default == true){
               price -= thisProduct.data.params[param].options[option].price;
             }
