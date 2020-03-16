@@ -145,14 +145,14 @@
             for(const imgActive of imgsActive){
               imgActive.classList.add(classNames.menuProduct.imageVisible);
             }
-            if (thisProduct.data.params[param].options[option].default !== true){
+            if (!thisProduct.data.params[param].options[option].default){
               price += thisProduct.data.params[param].options[option].price;
             }
           } else {
             for(const imgActive of imgsActive){
               imgActive.classList.remove(classNames.menuProduct.imageVisible);
             }
-            if (thisProduct.data.params[param].options[option].default == true){
+            if (thisProduct.data.params[param].options[option].default){
               price -= thisProduct.data.params[param].options[option].price;
             }
           }
