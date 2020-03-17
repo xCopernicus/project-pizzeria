@@ -237,17 +237,13 @@
 
     btnUnavailable(){
       const thisWidget = this;
-      console.log('happend');
-      console.log(thisWidget.input.value)
 
       if (thisWidget.value == settings.amountWidget.defaultMin){
         thisWidget.linkDecrease.classList.add(classNames.widgets.btnUnavailable);
-      } else {
-        thisWidget.linkDecrease.classList.remove(classNames.widgets.btnUnavailable);
-      }
-      if (thisWidget.value == settings.amountWidget.defaultMax){
+      } else if (thisWidget.value == settings.amountWidget.defaultMax){
         thisWidget.linkIncrease.classList.add(classNames.widgets.btnUnavailable);
       } else {
+        thisWidget.linkDecrease.classList.remove(classNames.widgets.btnUnavailable);
         thisWidget.linkIncrease.classList.remove(classNames.widgets.btnUnavailable);
       }
     }
