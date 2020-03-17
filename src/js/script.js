@@ -38,6 +38,9 @@
       wrapperActive: 'active',
       imageVisible: 'active',
     },
+    widgets: {
+      btnUnavailable: 'btn-unavailable',
+    },
   };
 
   const settings = {
@@ -201,6 +204,7 @@
       thisWidget.getElements();
       thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.setValue(thisWidget.input.value);
+      thisWidget.btnUnavailable();
       thisWidget.initActions();
 
       console.log('thisWidget: ', thisWidget);
@@ -211,10 +215,8 @@
       const thisWidget = this;
 
       thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
-      console.log(thisWidget.input);
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
       thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
-      console.log(thisWidget.linkIncrease);
     }
 
     setValue(value){
@@ -223,13 +225,31 @@
       const newValue = parseInt(value);
       console.log(newValue);
 
-      if (settings.amountWidget.defaultMin <= newValue && newValue <= settings.amountWidget.defaultMax) {
+      if (settings.amountWidget.defaultMin <= newValue && newValue <= settings.amountWidget.defaultMax){
         thisWidget.value = newValue;
         thisWidget.announce();
+        thisWidget.btnUnavailable();
       }
 
       thisWidget.input.value = thisWidget.value;
 
+    }
+
+    btnUnavailable(){
+      const thisWidget = this;
+      console.log('happend');
+      console.log(thisWidget.input.value)
+
+      if (thisWidget.value == settings.amountWidget.defaultMin){
+        thisWidget.linkDecrease.classList.add(classNames.widgets.btnUnavailable);
+      } else {
+        thisWidget.linkDecrease.classList.remove(classNames.widgets.btnUnavailable);
+      }
+      if (thisWidget.value == settings.amountWidget.defaultMax){
+        thisWidget.linkIncrease.classList.add(classNames.widgets.btnUnavailable);
+      } else {
+        thisWidget.linkIncrease.classList.remove(classNames.widgets.btnUnavailable);
+      }
     }
 
     initActions(){
