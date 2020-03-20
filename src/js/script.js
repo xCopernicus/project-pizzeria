@@ -73,6 +73,7 @@
     },
     cart: {
       defaultDeliveryFee: 10,
+      zeroDeliveryFee: 0,
     },
   };
 
@@ -318,7 +319,6 @@
     constructor(element) {
       const thisCart = this;
 
-      thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
       thisCart.products = [];
       thisCart.getElements(element);
       thisCart.initActions();
@@ -385,6 +385,7 @@
     update() {
       const thisCart = this;
 
+      thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
       thisCart.totalNumber = 0;
       thisCart.subtotalPrice = 0;
 
@@ -393,8 +394,8 @@
         thisCart.totalNumber += product.amount;
       }
 
-      if (thisCart.products.length == 0){
-        thisCart.dom.wrapper.classList.remove(classNames.cart.wrapperActive);
+      if (!thisCart.products.length){
+        thisCart.deliveryFee = settings.cart.zeroDeliveryFee;
       }
 
       thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
@@ -411,6 +412,10 @@
       const index = thisCart.products.indexOf(cartProduct);
 
       thisCart.products.splice(index, 1);
+
+      if (!thisCart.products.length){
+        thisCart.dom.wrapper.classList.remove(classNames.cart.wrapperActive);
+      }
 
       cartProduct.dom.wrapper.remove();
 
