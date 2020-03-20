@@ -17,7 +17,11 @@
   line-height: 26px;
   font-size: 10px;
 
-  &--lt {
+  &.btn-unavailable {
+    opacity: 0.6;
+  }
+
+  &.btn-quantity--lt {
     @include btn($color-light, $color-main, $color-light);
     padding: 0;
     width: 24px;
@@ -25,10 +29,6 @@
     line-height: 16px;
     font-size: 10px;
     opacity: 0;
-  }
-
-  &.btn-unavailable {
-    opacity: 0.6;
   }
 }
 
@@ -39,11 +39,9 @@ input, select {
   border-radius: $radius;
   padding: $base-size;
 
-  // CODE ADDED START
   &.error {
     border-color: $color-main;
   }
-  // CODE ADDED END
 }
 
 .checkbox {
