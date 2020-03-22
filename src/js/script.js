@@ -546,7 +546,7 @@
     getData() {
       const thisCartProduct = this;
 
-      return {id: thisCartProduct.id, Amount: thisCartProduct.amount, price: thisCartProduct.price, priceSingle: thisCartProduct.priceSingle, params: thisCartProduct.params};
+      return {id: thisCartProduct.id, amount: thisCartProduct.amount, price: thisCartProduct.price, priceSingle: thisCartProduct.priceSingle, params: thisCartProduct.params};
     }
 
   }
