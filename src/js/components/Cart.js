@@ -11,7 +11,7 @@ export class Cart {
     thisCart.initActions();
     //thisCart.allActive();
 
-    console.log('thisCart: ', thisCart);
+    //console.log('thisCart: ', thisCart);
   }
 
   getElements(element) {

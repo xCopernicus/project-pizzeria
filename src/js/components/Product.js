@@ -15,7 +15,7 @@ export class Product {
     thisProduct.initOrderForm();
     thisProduct.initAmountWidget();
     thisProduct.processOrder();
-    console.log('New product: ', thisProduct);
+    //console.log('New product: ', thisProduct);
   }
 
   allActive(){
@@ -95,7 +95,7 @@ export class Product {
     const thisProduct = this;
 
     const formData = utils.serializeFormToObject(thisProduct.form);
-    console.log('formData: ', formData);
+    //console.log('formData: ', formData);
 
     thisProduct.params = {};
 
