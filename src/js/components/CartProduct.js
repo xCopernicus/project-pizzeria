@@ -9,6 +9,7 @@ export class CartProduct {
     thisCartProduct.price = menuProduct.price;
     thisCartProduct.priceSingle = menuProduct.priceSingle;
     thisCartProduct.amount = menuProduct.amount;
+    console.log(thisCartProduct.amount);
     thisCartProduct.name = menuProduct.name;
     thisCartProduct.params = JSON.parse(JSON.stringify(menuProduct.params));
 

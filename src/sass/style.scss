@@ -1,10 +1,10 @@
-@import 'partials/settings';
-@import 'partials/typography';
-@import 'partials/global';
-@import 'partials/elements';
+@import 'shared/settings';
+@import 'shared/typography';
+@import 'shared/global';
+@import 'shared/elements';
 
-@import 'partials/header';
-@import 'partials/cart';
+@import 'shared/header';
+@import 'components/cart';
 
-@import 'partials/product';
-@import 'partials/booking';
+@import 'components/product';
+@import 'components/booking';

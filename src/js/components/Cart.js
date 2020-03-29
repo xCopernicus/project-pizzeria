@@ -4,14 +4,13 @@ import {CartProduct} from './CartProduct.js';
 
 export class Cart {
   constructor(element) {
-    const thisCart = this;
 
-    thisCart.products = [];
-    thisCart.getElements(element);
-    thisCart.initActions();
-    //thisCart.allActive();
+    this.products = [];
+    this.getElements(element);
+    this.initActions();
+    //this.allActive();
 
-    //console.log('thisCart: ', thisCart);
+    //console.log('thisCart: ', this);
   }
 
   getElements(element) {
@@ -44,11 +43,11 @@ export class Cart {
       thisCart.update();
     });
 
-    thisCart.dom.productList.addEventListener('remove', function() {
+    thisCart.dom.productList.addEventListener('remove', function(event) {
       thisCart.remove(event.detail.cartProduct);
     });
 
-    thisCart.dom.form.addEventListener('submit', function() {
+    thisCart.dom.form.addEventListener('submit', function(event) {
       event.preventDefault();
       thisCart.sendOrder();
     });

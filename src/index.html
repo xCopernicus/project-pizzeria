@@ -7,6 +7,8 @@
   <title>Pizzeria</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -99,7 +101,7 @@
             People
             <div class="widget-amount people-amount"> <!-- widget-amount -->
               <a class="btn-quantity" href="#less"><i class="fas fa-minus"></i></a>
-              <input class="amount" type="text" name="people" value="1">
+              <input class="amount" type="number" name="people" value="1">
               <a class="btn-quantity" href="#more"><i class="fas fa-plus"></i></a>
             </div>
           </label>
@@ -107,7 +109,7 @@
             Hours
             <div class="widget-amount hours-amount"> <!-- widget-amount -->
               <a class="btn-quantity" href="#less"><i class="fas fa-minus"></i></a>
-              <input class="amount" type="text" name="hours" value="1">
+              <input class="amount" type="number" name="hours" value="1">
               <a class="btn-quantity" href="#more"><i class="fas fa-plus"></i></a>
             </div>
           </label>
@@ -142,7 +144,7 @@
     <li>
       <div class="widget-amount"> <!-- widget-amount -->
         <a class="btn-quantity btn-quantity--lt" href="#less"><i class="fas fa-minus"></i></a>
-        <input class="amount" type="text" value="{{ amount }}">
+        <input class="amount" type="number" value="{{ amount }}">
         <a class="btn-quantity btn-quantity--lt" href="#more"><i class="fas fa-plus"></i></a>
       </div>
       <div class="cart__product">
@@ -224,7 +226,7 @@
               <div class="widget-amount"> <!-- widget-amount -->
                 <h3 class="product__params-title">Select quantity</h3>
                 <a class="btn-quantity" href="#less"><i class="fas fa-minus"></i></a>
-                <input class="amount" type="text" value="1">
+                <input class="amount" type="number" value="1">
                 <a class="btn-quantity" href="#more"><i class="fas fa-plus"></i></a>
               </div>
               <p class="product__total-price">
@@ -245,7 +247,9 @@
     </article> <!-- .product -->
   </script>
 
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="vendor/range-slider.min.js"></script>
   <script src="js/app.js" type="module"></script>
 </body>
 </html>
