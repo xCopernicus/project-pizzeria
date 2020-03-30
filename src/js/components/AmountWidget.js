@@ -42,7 +42,7 @@ export class AmountWidget extends BaseWidget{
   }
 
   renderValue(){
-    console.log('widget value: ', this.value);
+    //console.log('widget value: ', this.value);
     this.dom.input.value = this.value;
   }
 }
