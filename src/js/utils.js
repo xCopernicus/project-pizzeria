@@ -62,7 +62,8 @@ utils.hourToNumber = function(hour){
 };
 
 utils.dateToStr = function(dateObj){
-  return dateObj.toISOString().slice(0, 10);
+  const dateObj2 = new Date(dateObj);
+  return dateObj2.toISOString().slice(0, 10);
 };
 
 utils.addDays = function(dateStr, days){
