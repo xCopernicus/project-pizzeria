@@ -19,6 +19,7 @@
 
   &.btn-unavailable {
     opacity: 0.6;
+    cursor: not-allowed;
   }
 
   &.btn-quantity--lt {

@@ -78,6 +78,9 @@ export class Booking {
       })
       .then(function([bookings, eventsCurrent, eventsRepeat]){
         thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
+      })
+      .catch(function(err) {
+        alert('Error!' + err);
       });
   }
 
