@@ -1,0 +1,70 @@
+/* GLOBAL */
+
+.home-wrapper {
+  margin: ($base-size * 3.5) auto;
+  padding: ($base-size * 6) ($base-size * 4);
+  background: $color-light;
+  border-bottom: 1px solid lighten($color-dark, 70%);
+  border-radius: $radius;
+}
+
+/* MENU */
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.order, .booking {
+  flex: 1;
+  max-height: 120px;
+}
+
+.order {
+  margin-right: 3px;
+  position: relative;
+}
+
+.booking {
+  margin-left: 3px;
+  position: relative;
+}
+
+.order img, .booking img{
+  border-radius: $radius;
+}
+
+.info {
+  margin-top: 6px;
+  height: 120px;
+  width: 100%;
+  border-radius: $radius;
+  background-color: $color-main;
+  position: relative;
+}
+
+.menu-text {
+  color: white;
+  margin: 0;
+}
+
+.menu-title {
+  font-family: $font-header;
+  font-weight: $font-semibold;
+  font-size: 26px;
+}
+
+.text-wrapper-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.menu-text-font {
+  color: white;
+  margin: 0;
+}

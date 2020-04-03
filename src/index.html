@@ -22,6 +22,7 @@
         </div>
 
         <div class="main-nav">
+          <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -66,6 +67,9 @@
   <!--<div id="product-list" class="product-list container"></div>-->
 
   <div id="pages">
+    <section id="home">
+      <div class="home-wrapper container"></div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -245,6 +249,37 @@
         </div>
 
     </article> <!-- .product -->
+  </script>
+
+  <script id="template-home" type="text/x-handlebars-template">
+
+    <section class="menu">
+      <div class="row">
+        <div class="order">
+          <div class="text-wrapper-menu">
+            <p class="menu-title menu-text">ORDER ONLINE</p>
+          </div>
+          <img src="https://i.postimg.cc/mDRLsDhR/pizza-1.jpg">
+        </div>
+        <div class="booking">
+          <div class="text-wrapper-menu">
+            <p class="menu-title menu-text">BOOK A TABLE</p>
+          </div>
+          <img src="https://i.postimg.cc/Twk0ntys/pizza-2.jpg">
+        </div>
+      </div>
+      <div class="row">
+        <div class="info">
+          <div class="text-wrapper-menu">
+            <p class="menu-title menu-text">OPENING HOURS:</p>
+            <p class="menu-text">TUE-SUN, 12PM - 12AM</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
