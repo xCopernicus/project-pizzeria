@@ -255,16 +255,5 @@
       "starters": ["lemonWater"]
     }
   ],
-  "booking": [
-    {
-      "id": 2,
-      "date": "2020-04-02",
-      "hour": "16:00",
-      "table": 3,
-      "repeat": "daily",
-      "duration": 2,
-      "ppl": 3,
-      "starters": ["bread", "lemonWater"]
-    }
-  ]
+  "booking": []
 }
