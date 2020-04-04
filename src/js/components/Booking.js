@@ -174,14 +174,14 @@ export class Booking {
 
   sendBooking(){
 
-    //const thisBooking = this;
+    const thisBooking = this;
 
     this.clickedTable = this.dom.wrapper.querySelector('.floor-plan .clicked');
-    const tableNo = this.clickedTable.getAttribute(settings.booking.tableIdAttribute);
+    const tableNo = parseInt(this.clickedTable.getAttribute(settings.booking.tableIdAttribute));
 
     let booking = {
       date: this.date,
-      hour: this.hour,
+      hour: this.hourPicker.value,
       table: tableNo,
       repeat: false,
       duration: parseInt(this.hoursAmount.dom.input.value),
@@ -208,8 +208,10 @@ export class Booking {
       })
       .then(function(parsedResponse){
         console.log('parsedResponse: ', parsedResponse);
-        //thisBooking.getData();
+        thisBooking.getData();
+      })
+      .catch(function(err){
+        alert(err);
       });
-
   }
 }
