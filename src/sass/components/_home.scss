@@ -57,41 +57,30 @@
 .reviews {
   margin-top: 100px;
   position: relative;
-  height: 250px;
+  height: 225px;
 }
 
-.review {
+.carousel {
+  height: 100%;
+}
+
+.carousel_track-reviews {
+  list-style: none;
+  height: 100%;
+  padding: 0;
+}
+
+.carousel-slide {
   position: absolute;
-
-  &--active {
-    right: 0;
-    visibility: visible;
-  }
-
-  &--one {
-
-  }
-
-  &--two {
-    right: -200%;
-    visibility: hidden;
-  }
-
-  &--three {
-    right: -400%;
-    visibility: hidden;
-  }
 }
 
-.carousel-menu {
-  position: absolute;
-  left: 50%;
-  top: 210px;
-  transform: translateX(-50%);
+.carousel-nav {
+ display: flex;
+ justify-content: center;
 }
+
 
 .btn-carousel {
-  //margin: 6px;
   display: inline-block;
   padding: 3px;
   width: 27px;
@@ -113,6 +102,9 @@
   }
 
 }
+
+
+
 
 .pic-review {
   flex: 1;
