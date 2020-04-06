@@ -22,3 +22,21 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+
+.text-wrapper-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.img-grid {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: $radius;
+  width: 193.328px;
+  height: 193.328px;
+}

@@ -65,7 +65,10 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    clickedTable: '.floor-plan .clicked',
     bookTableBtn: '.order-confirmation button',
+    water: '[name="starter"][value="water"]',
+    bread: '[name="starter"][value="bread"]',
     phone: '[name="phone"]',
     address: '[name="address"]'
   },
@@ -116,6 +119,8 @@ export const settings = {
   },
   booking: {
     tableIdAttribute: 'data-table',
+    water: 'lemonWater',
+    bread: 'bread',
   },
   db: {
     url: '//localhost:3131',

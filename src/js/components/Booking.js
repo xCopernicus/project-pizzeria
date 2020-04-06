@@ -11,7 +11,7 @@ export class Booking {
     this.initWidgets();
     this.getData();
     this.chooseTable();
-    console.log(this);
+    //console.log(this);
   }
 
   render(bookingWidget){
@@ -27,6 +27,8 @@ export class Booking {
     this.dom.tables = this.dom.wrapper.querySelectorAll(select.booking.tables);
     this.dom.phone = this.dom.wrapper.querySelector(select.booking.phone);
     this.dom.address = this.dom.wrapper.querySelector(select.booking.address);
+    this.dom.water = this.dom.wrapper.querySelector(select.booking.water);
+    this.dom.bread = this.dom.wrapper.querySelector(select.booking.bread);
     this.dom.bookTableBtn = this.dom.wrapper.querySelector(select.booking.bookTableBtn);
   }
 
@@ -70,7 +72,7 @@ export class Booking {
       eventsRepeat: settings.db.url + '/' + settings.db.event + '?' + params.eventsRepeat,
     };
 
-    console.log('getData urls', urls);
+    //console.log('getData urls', urls);
 
     Promise.all([
       fetch(urls.booking),
@@ -113,7 +115,7 @@ export class Booking {
         this.makeBooked(date, eventRepeat.hour, eventRepeat.duration, eventRepeat.table);
       }
     }
-    console.log('this.booked: ', this.booked);
+    //console.log('this.booked: ', this.booked);
     this.updateDOM();
   }
 
@@ -151,19 +153,19 @@ export class Booking {
       table.classList.remove('clicked');
     }
 
-    console.log(this.booked);
+    //console.log(this.booked);
   }
 
   chooseTable(){
 
     const thisBooking = this;
 
-    for (const tableAll of this.dom.tables){
-      tableAll.addEventListener('click', function(){
-        if(!tableAll.classList.contains('booked')){
-          tableAll.classList.toggle('clicked');
+    for (const table of this.dom.tables){
+      table.addEventListener('click', function(){
+        if(!table.classList.contains('booked')){
+          table.classList.toggle('clicked');
           for (const tableClicked of thisBooking.dom.tables){
-            if (!(tableAll == tableClicked)){
+            if (!(table == tableClicked)){
               tableClicked.classList.remove('clicked');
             }
           }
@@ -176,7 +178,7 @@ export class Booking {
 
     const thisBooking = this;
 
-    this.clickedTable = this.dom.wrapper.querySelector('.floor-plan .clicked');
+    this.clickedTable = this.dom.wrapper.querySelector(select.booking.clickedTable);
     const tableNo = parseInt(this.clickedTable.getAttribute(settings.booking.tableIdAttribute));
 
     let booking = {
@@ -187,9 +189,17 @@ export class Booking {
       duration: parseInt(this.hoursAmount.dom.input.value),
       ppl: parseInt(this.peopleAmount.dom.input.value),
       starters: [],
-      phone: parseInt(this.dom.phone.value),
+      phone: this.dom.phone.value,
       address: this.dom.address.value,
     };
+
+    if(this.dom.water.checked){
+      booking.starters.push(settings.booking.water);
+    }
+
+    if (this.dom.bread.checked) booking.starters.push(settings.booking.bread);
+
+
 
     const url = settings.db.url + '/' + settings.db.booking;
 
@@ -203,15 +213,11 @@ export class Booking {
     };
 
     fetch(url, options)
-      .then(function(response){
-        return response.json();
-      })
-      .then(function(parsedResponse){
+      .then(response => response.json())
+      .then(parsedResponse => {
         console.log('parsedResponse: ', parsedResponse);
         thisBooking.getData();
       })
-      .catch(function(err){
-        alert(err);
-      });
+      .catch(err => alert(err));
   }
 }

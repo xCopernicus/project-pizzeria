@@ -253,71 +253,147 @@
 
   <script id="template-home" type="text/x-handlebars-template">
 
-    <section class="menu">
+    <div class="menu">
+
       <div class="row">
         <div class="order">
-          <div class="text-wrapper-menu">
-            <p class="menu-title menu-text">ORDER ONLINE</p>
-          </div>
-          <img src="https://i.postimg.cc/mDRLsDhR/pizza-1.jpg">
+          <a href="#/order">
+            <div class="text-wrapper-center">
+              <p class="menu-title menu-text">ORDER ONLINE</p>
+            </div>
+            <img src="https://i.postimg.cc/mDRLsDhR/pizza-1.jpg">
+          </a>
         </div>
         <div class="booking">
-          <div class="text-wrapper-menu">
-            <p class="menu-title menu-text">BOOK A TABLE</p>
-          </div>
-          <img src="https://i.postimg.cc/Twk0ntys/pizza-2.jpg">
+          <a href="#/booking">
+            <div class="text-wrapper-center">
+              <p class="menu-title menu-text">BOOK A TABLE</p>
+            </div>
+            <img src="https://i.postimg.cc/Twk0ntys/pizza-2.jpg">
+          </a>
         </div>
       </div>
       <div class="row">
         <div class="info">
-          <div class="text-wrapper-menu">
+          <div class="text-wrapper-center">
             <p class="menu-title menu-text">OPENING HOURS:</p>
             <p class="menu-text">TUE-SUN, 12PM - 12AM</p>
           </div>
         </div>
       </div>
-    </section>
 
-    <section class="reviews">
+    </div>
 
-    </section>
+    <div class="reviews">
 
-    <section class="gallery">
+      <div class="row review review--one review--active">
+        <div class="pic-review">
+          <img class="img-grid" src="https://i.postimg.cc/Lsn6BTd6/pizza-3.jpg">
+        </div>
+        <div class="review-text">
+          <p class="review-text--title">1AMAZING SERVICE!</p>
+          <p>Sed malesuada, elit quis condimentum vulputate, mauris elit laoreet nisl, in efficitur odio lectus a velit. Vestibulum elementum luctus eros, quis eleifend.</p>
+          <p class="review-text--author">-Loen Michael</p>
+        </div>
+      </div>
+      <div class="row review review--two">
+        <div class="pic-review">
+          <img class="img-grid" src="https://i.postimg.cc/Lsn6BTd6/pizza-3.jpg">
+        </div>
+        <div class="review-text">
+          <p class="review-text--title">2AMAZING SERVICE!</p>
+          <p>Sed malesuada, elit quis condimentum vulputate, mauris elit laoreet nisl, in efficitur odio lectus a velit. Vestibulum elementum luctus eros, quis eleifend.</p>
+          <p class="review-text--author">-Loen Michael</p>
+        </div>
+      </div>
+      <div class="row review review--three">
+        <div class="pic-review">
+          <img class="img-grid" src="https://i.postimg.cc/Lsn6BTd6/pizza-3.jpg">
+        </div>
+        <div class="review-text">
+          <p class="review-text--title">3AMAZING SERVICE!</p>
+          <p>Sed malesuada, elit quis condimentum vulputate, mauris elit laoreet nisl, in efficitur odio lectus a velit. Vestibulum elementum luctus eros, quis eleifend.</p>
+          <p class="review-text--author">-Loen Michael</p>
+        </div>
+      </div>
+
+      <div class="carousel-menu">
+        <div class="btn-carousel btn-carousel--active">
+          <i class="fas fa-circle"></i>
+        </div>
+        <div class="btn-carousel">
+          <i class="fas fa-circle"></i>
+        </div>
+        <div class="btn-carousel">
+          <i class="fas fa-circle"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="gallery">
+
       <div class="row">
-        <div class="picture">
-          <div class="links">
+        <div class="post-gallery">
+          <div class="pic-gallery">
+            <img class="img-grid" src="https://i.postimg.cc/sxPY7p7g/pizza-4.jpg">
           </div>
-          <img src="#">
+          <div class="links text-wrapper-center">
+            <a href="#/home"><i class="fas fa-heart"></i>Like</a>
+            <a href="#/home"><i class="fas fa-share-alt"></i>Share</a>
+          </div>
         </div>
-        <div class="picture">
-          <div class="links">
+        <div class="post-gallery">
+          <div class="pic-gallery">
+            <img class="img-grid" src="https://i.postimg.cc/jdF15Tx3/pizza-5.jpg">
           </div>
-          <img src="#">
+          <div class="links text-wrapper-center">
+            <a href="#/home"><i class="fas fa-heart"></i>Like</a>
+            <a href="#/home"><i class="fas fa-share-alt"></i>Share</a>
+          </div>
         </div>
-        <div class="picture">
-          <div class="links">
+        <div class="post-gallery post-gallery--last">
+          <div class="pic-gallery">
+            <img class="img-grid" src="https://i.postimg.cc/fTtK89s5/pizza-6.jpg">
           </div>
-          <img src="#">
+          <div class="links text-wrapper-center">
+            <a href="#/home"><i class="fas fa-heart"></i>Like</a>
+            <a href="#/home"><i class="fas fa-share-alt"></i>Share</a>
+          </div>
         </div>
       </div>
       <div class="row">
-        <div class="picture">
-          <div class="links">
+        <div class="post-gallery">
+          <div class="pic-gallery">
+            <img class="img-grid" src="https://i.postimg.cc/P5RN22WF/pizza-7.jpg">
           </div>
-          <img src="#">
+          <div class="links text-wrapper-center">
+            <a href="#/home"><i class="fas fa-heart"></i>Like</a>
+            <a href="#/home"><i class="fas fa-share-alt"></i>Share</a>
+          </div>
         </div>
-        <div class="picture">
-          <div class="links">
+        <div class="post-gallery">
+          <div class="pic-gallery">
+            <img class="img-grid" src="https://i.postimg.cc/rsmvnCCQ/pizza-8.jpg">
           </div>
-          <img src="#">
+          <div class="links text-wrapper-center">
+            <a href="#/home"><i class="fas fa-heart"></i>Like</a>
+            <a href="#/home"><i class="fas fa-share-alt"></i>Share</a>
+          </div>
         </div>
-        <div class="picture">
-          <div class="links">
+        <div class="post-gallery post-gallery--last">
+          <div class="pic-gallery">
+            <img class="img-grid" src="https://i.postimg.cc/7LBvgWSf/pizza-9.jpg">
           </div>
-          <img src="#">
+          <div class="links text-wrapper-center">
+            <a href="#/home"><i class="fas fa-heart"></i>Like</a>
+            <a href="#/home"><i class="fas fa-share-alt"></i>Share</a>
+          </div>
         </div>
       </div>
-    </section>
+      <a class="view-more" href="#/home">View more on Instagram</a>
+
+    </div>
 
   </script>
 

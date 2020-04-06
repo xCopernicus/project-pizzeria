@@ -144,11 +144,8 @@ export class Cart {
     };
 
     fetch(url, options)
-      .then(function(response){
-        return response.json();
-      })
-      .then(function(parsedResponse){
-        console.log('parsedResponse: ', parsedResponse);
-      });
+      .then(response => response.json())
+      .then(parsedResponse => console.log('parsedResponse: ', parsedResponse))
+      .catch(err => alert(err));
   }
 }

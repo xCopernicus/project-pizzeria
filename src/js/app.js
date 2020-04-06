@@ -39,7 +39,8 @@ const app = {
         thisApp.data.products = parsedResponse;
 
         thisApp.initMenu();
-      });
+      })
+      .catch(err => alert(err));
 
     thisApp.data = {};
   },
