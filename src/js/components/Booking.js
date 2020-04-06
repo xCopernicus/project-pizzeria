@@ -60,6 +60,7 @@ export class Booking {
     endDate[settings.db.dateEndParamKey] = startEndDates[settings.db.dateEndParamKey];
 
     const params = {
+      closed: settings.db.repeatParam + '&' + utils.queryParams(endDate),
       booking: utils.queryParams(startEndDates),
       eventsCurrent: settings.db.notRepeatParam + '&' + utils.queryParams(startEndDates),
       eventsRepeat: settings.db.repeatParam + '&' + utils.queryParams(endDate),
@@ -67,39 +68,51 @@ export class Booking {
     //console.log('getData params', params);
 
     const urls = {
+      closed: settings.db.url + '/' + settings.db.closed + '?' + params.closed,
       booking: settings.db.url + '/' + settings.db.booking + '?' + params.booking,
       eventsCurrent: settings.db.url + '/' + settings.db.event + '?' + params.eventsCurrent,
       eventsRepeat: settings.db.url + '/' + settings.db.event + '?' + params.eventsRepeat,
     };
 
-    //console.log('getData urls', urls);
+    console.log('getData urls', urls);
 
     Promise.all([
+      fetch(urls.closed),
       fetch(urls.booking),
       fetch(urls.eventsCurrent),
       fetch(urls.eventsRepeat),
     ])
-      .then(function([bookingsResponse, eventsCurrentResponse, eventsRepeatResponse]){
+      .then(function([closedResponse, bookingsResponse, eventsCurrentResponse, eventsRepeatResponse]){
         return Promise.all([
+          closedResponse.json(),
           bookingsResponse.json(),
           eventsCurrentResponse.json(),
           eventsRepeatResponse.json(),
         ]);
       })
-      .then(function([bookings, eventsCurrent, eventsRepeat]){
-        thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
+      .then(function([closed, bookings, eventsCurrent, eventsRepeat]){
+        thisBooking.parseData(closed, bookings, eventsCurrent, eventsRepeat);
       })
       .catch(function(err){
         alert('Error!' + err);
       });
   }
 
-  parseData(bookings, eventsCurrent, eventsRepeat){
+  parseData(closed, bookings, eventsCurrent, eventsRepeat){
+    //console.log('closedResponse: ', closedResponse);
     //console.log('bookings: ', bookings);
     //console.log('eventsCurrent: ', eventsCurrent);
     //console.log('eventsRepeat: ', eventsRepeat);
 
     this.booked = {};
+
+    for (const close of closed){
+      console.log(close);
+      for (let i = 0; i <= settings.datePicker.maxDaysInFuture; i++){
+        let date = utils.dateToStr(utils.addDays(this.datePicker.minDate, i));
+        this.makeBooked(date, close.hour, close.duration, close.table);
+      }
+    }
 
     for (const eventCurrent of eventsCurrent){
       this.makeBooked(eventCurrent.date, eventCurrent.hour, eventCurrent.duration, eventCurrent.table);
@@ -115,7 +128,7 @@ export class Booking {
         this.makeBooked(date, eventRepeat.hour, eventRepeat.duration, eventRepeat.table);
       }
     }
-    //console.log('this.booked: ', this.booked);
+    console.log('this.booked: ', this.booked);
     this.updateDOM();
   }
 
@@ -139,20 +152,25 @@ export class Booking {
   updateDOM(){
     this.date = this.datePicker.value;
     this.hour = utils.hourToNumber(this.hourPicker.value);
-    this.duration = parseInt(this.hoursAmount.dom.input.value);
+    this.duration = parseInt(this.hoursAmount.value);
 
     for (const table of this.dom.tables){
-      const tableNo = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
+      for (let i = 0; i < this.duration; i += 0.5){
 
-      if (this.booked[this.date] && this.booked[this.date][this.hour] && this.booked[this.date][this.hour].includes(tableNo)){
-        table.classList.add(classNames.booking.tableBooked);
-      } else {
-        table.classList.remove(classNames.booking.tableBooked);
+        const tableNo = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
+        if (this.hour + i >= 24) {
+          this.hour = 0;
+        }
+
+        if (this.booked[this.date] && this.booked[this.date][this.hour + i] && this.booked[this.date][this.hour + i].includes(tableNo)){
+          table.classList.add(classNames.booking.tableBooked);
+          break;
+        } else {
+          table.classList.remove(classNames.booking.tableBooked);
+        }
       }
-
-      table.classList.remove('clicked');
+      table.classList.remove(classNames.booking.tableClicked);
     }
-
     //console.log(this.booked);
   }
 
@@ -162,11 +180,11 @@ export class Booking {
 
     for (const table of this.dom.tables){
       table.addEventListener('click', function(){
-        if(!table.classList.contains('booked')){
-          table.classList.toggle('clicked');
+        if(!table.classList.contains(classNames.booking.tableBooked)){
+          table.classList.toggle(classNames.booking.tableClicked);
           for (const tableClicked of thisBooking.dom.tables){
             if (!(table == tableClicked)){
-              tableClicked.classList.remove('clicked');
+              tableClicked.classList.remove(classNames.booking.tableClicked);
             }
           }
         }
@@ -186,8 +204,8 @@ export class Booking {
       hour: this.hourPicker.value,
       table: tableNo,
       repeat: false,
-      duration: parseInt(this.hoursAmount.dom.input.value),
-      ppl: parseInt(this.peopleAmount.dom.input.value),
+      duration: this.hoursAmount.value,
+      ppl: this.peopleAmount.value,
       starters: [],
       phone: this.dom.phone.value,
       address: this.dom.address.value,

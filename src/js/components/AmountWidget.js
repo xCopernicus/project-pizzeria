@@ -18,7 +18,6 @@ export class AmountWidget extends BaseWidget{
     this.dom.linkIncrease = this.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);
   }
 
-
   isValid(newValue){
     return !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax;
   }
@@ -32,12 +31,12 @@ export class AmountWidget extends BaseWidget{
 
     this.dom.linkDecrease.addEventListener('click', function(event){
       event.preventDefault();
-      thisWidget.value--;
+      thisWidget.value -= 0.5;
     });
 
     this.dom.linkIncrease.addEventListener('click', function(event){
       event.preventDefault();
-      thisWidget.value++;
+      thisWidget.value += 0.5;
     });
   }
 

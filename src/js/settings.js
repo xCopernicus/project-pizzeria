@@ -75,6 +75,10 @@ export const select = {
   nav: {
     links: '.main-nav a',
   },
+  home: {
+    carouselBtns: '.btn-carousel',
+    carouselBtnActive: '.btn-carousel.btn-carousel--active',
+  }
 };
 
 export const classNames = {
@@ -88,6 +92,7 @@ export const classNames = {
   booking: {
     loading: 'loading',
     tableBooked: 'booked',
+    tableClicked: 'clicked',
   },
   nav: {
     active: 'active',
@@ -126,6 +131,7 @@ export const settings = {
     url: '//localhost:3131',
     product: 'product',
     order: 'order',
+    closed: 'closed',
     booking: 'booking',
     event: 'event',
     dateStartParamKey: 'date_gte',

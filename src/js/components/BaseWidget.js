@@ -24,7 +24,9 @@ export class BaseWidget {
   }
 
   parseValue(newValue){
-    return parseInt(newValue);
+    if (Number.isInteger(2 * newValue)) {
+      return Number(newValue);
+    }
   }
 
   isValid(newValue){
