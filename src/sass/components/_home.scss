@@ -62,6 +62,8 @@
 
 .carousel {
   height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .carousel_track-reviews {
@@ -72,6 +74,12 @@
 
 .carousel-slide {
   position: absolute;
+  transition: 1s;
+  //visibility: hidden;
+
+  &--active {
+    visibility: visible;
+  }
 }
 
 .carousel-nav {
@@ -94,11 +102,17 @@
   }
 
   &:hover i{
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
-  &--active i{
-    opacity: 1;
+  &--active {
+    i {
+      opacity: 1;
+    }
+
+    &:hover i{
+      opacity: 1;
+    }
   }
 
 }

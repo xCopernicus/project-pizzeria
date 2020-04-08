@@ -78,6 +78,7 @@ export const select = {
   home: {
     carouselBtns: '.btn-carousel',
     carouselBtnActive: '.btn-carousel.btn-carousel--active',
+    slides: '.carousel-slide',
   }
 };
 
