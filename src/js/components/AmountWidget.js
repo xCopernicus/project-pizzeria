@@ -2,13 +2,13 @@ import {select, settings} from '../settings.js';
 import {BaseWidget} from './BaseWidget.js';
 
 export class AmountWidget extends BaseWidget{
-  constructor(element){
+  constructor(element, interval = 1){
     const initValue =  parseInt(element.querySelector(select.widgets.amount.input).value);
     super(element, initValue);
 
     this.getElements();
     this.btnUnavailable();
-    this.initActions();
+    this.initActions(interval);
   }
 
   getElements(){
@@ -22,7 +22,7 @@ export class AmountWidget extends BaseWidget{
     return !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax;
   }
 
-  initActions(){
+  initActions(interval){
     const thisWidget = this;
 
     this.dom.input.addEventListener('change', function(){
@@ -31,12 +31,12 @@ export class AmountWidget extends BaseWidget{
 
     this.dom.linkDecrease.addEventListener('click', function(event){
       event.preventDefault();
-      thisWidget.value -= 0.5;
+      thisWidget.value -= interval;
     });
 
     this.dom.linkIncrease.addEventListener('click', function(event){
       event.preventDefault();
-      thisWidget.value += 0.5;
+      thisWidget.value += interval;
     });
   }
 

@@ -34,7 +34,7 @@ export class Booking {
 
   initWidgets(){
     this.peopleAmount = new AmountWidget(this.dom.peopleAmount);
-    this.hoursAmount = new AmountWidget(this.dom.hoursAmount);
+    this.hoursAmount = new AmountWidget(this.dom.hoursAmount, 0.5);
     this.datePicker = new DatePicker(this.dom.datePicker);
     this.hourPicker = new HourPicker(this.dom.hourPicker);
 

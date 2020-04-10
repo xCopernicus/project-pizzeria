@@ -48,9 +48,11 @@ const app = {
   initPages: function() {
     const thisApp = this;
 
-    thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
+    this.pages = Array.from(document.querySelector(select.containerOf.pages).children);
+    console.log(this.pages);
 
-    thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
+    this.navLinks = Array.from(document.querySelectorAll(select.nav.links));
+    console.log(this.navLinks);
 
     let pagesMatchingHash = [];
 

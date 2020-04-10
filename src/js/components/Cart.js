@@ -120,6 +120,7 @@ export class Cart {
   sendOrder() {
     const thisCart = this;
     const url = settings.db.url + '/' + settings.db.order;
+    console.log('order sent')
 
     let payload = {
       address: thisCart.dom.address.value,
@@ -145,7 +146,10 @@ export class Cart {
 
     fetch(url, options)
       .then(response => response.json())
-      .then(parsedResponse => console.log('parsedResponse: ', parsedResponse))
+      .then(parsedResponse => {
+        console.log('parsedResponse: ', parsedResponse)
+        thisCart.update();
+      })
       .catch(err => alert(err));
   }
 }
