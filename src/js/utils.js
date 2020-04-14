@@ -1,5 +1,7 @@
 /* global Handlebars, dataSource */
 
+import {classNames} from './settings.js';
+
 export const utils = {};
 
 utils.createDOMFromHTML = function(htmlString) {
@@ -12,6 +14,18 @@ utils.createPropIfUndefined = function(obj, key, value = []){
   if(!obj.hasOwnProperty(key)){
     obj[key] = value;
   }
+};
+
+utils.activatePage = function(pageId, links, pages){
+  for (const link of links) {
+    link.classList.toggle(classNames.nav.active, link.getAttribute('href') == '#' + pageId);
+  }
+
+  for (const page of pages) {
+    page.classList.toggle(classNames.nav.active, page.getAttribute('id') == pageId);
+  }
+
+  window.location.hash = '#/' + pageId;
 };
 
 utils.serializeFormToObject = function(form){

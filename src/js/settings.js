@@ -79,6 +79,8 @@ export const select = {
     carouselBtns: '.btn-carousel',
     carouselBtnActive: '.btn-carousel.btn-carousel--active',
     slides: '.carousel-slide',
+    order: '[href="#order"]',
+    booking: '[href="#booking"]',
   }
 };
 
