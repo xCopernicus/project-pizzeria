@@ -67,8 +67,11 @@ export class Home {
 
   carousel(){
     const thisHome = this;
+    const currentLocation = window.location.hash.replace('#/', '');
 
-    this.startInterval();
+    if(currentLocation === 'home'){
+      this.startInterval();
+    };
 
     for (let index1 = 0; index1 < this.dom.slides.length; index1++){
       const slide1 = this.dom.slides[index1];
