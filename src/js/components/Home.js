@@ -10,6 +10,7 @@ export class Home {
   }
 
   render(homeWidget){
+    const thisHome = this;
     const html = templates.home();
 
     this.dom = {};
@@ -22,6 +23,15 @@ export class Home {
     this.navLinks = Array.from(document.querySelectorAll(select.nav.links));
     this.dom.carouselBtns = this.dom.wrapper.querySelectorAll(select.home.carouselBtns);
     this.dom.slides = this.dom.wrapper.querySelectorAll(select.home.slides);
+
+    window.onpopstate = function(){
+      const currentLocation = window.location.hash.replace('#/', '');
+      if(currentLocation === 'home'){
+        thisHome.startInterval();
+      } else {
+        thisHome.stopInterval();
+      }
+    };
   }
 
   links(){
@@ -43,12 +53,16 @@ export class Home {
   startInterval() {
     const thisHome = this;
 
-    setInterval(function(){
+    this.interval = setInterval(function(){
       console.log('Interval');
 
       thisHome.dom.carouselBtns[thisHome.slideAuto].dispatchEvent(new Event('click'));
       thisHome.slideAuto < (thisHome.dom.slides.length - 1) ? thisHome.slideAuto++ : thisHome.slideAuto = 0;
     }, 3000);
+  }
+
+  stopInterval() {
+    clearInterval(this.interval);
   }
 
   carousel(){
