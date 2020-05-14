@@ -71,7 +71,7 @@ export class Home {
 
     if(currentLocation === 'home'){
       this.startInterval();
-    };
+    }
 
     for (let index1 = 0; index1 < this.dom.slides.length; index1++){
       const slide1 = this.dom.slides[index1];
